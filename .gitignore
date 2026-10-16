@@ -3,3 +3,5 @@ data/
 artifact/
 .vscode/
 .env
+__pycache__/
+.DS_Store

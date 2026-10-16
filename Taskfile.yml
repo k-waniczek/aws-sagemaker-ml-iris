@@ -4,3 +4,16 @@ tasks:
   run:
     cmds:
       - fish -c 'source .venv/bin/activate.fish; and python run_training.py'
+
+  evaluate:
+    cmds:
+      - fish -c 'source .venv/bin/activate.fish; and python evaluate.py'
+
+  migrate:
+    dotenv:
+      - .env
+    cmds:
+      - aws s3 cp data/test.csv s3://$AWS_S3_BUCKET_NAME/iris/test/test.csv
+      - aws s3 cp data/train.csv s3://$AWS_S3_BUCKET_NAME/iris/train/train.csv
+
+

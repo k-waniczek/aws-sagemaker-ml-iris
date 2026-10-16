@@ -1,9 +1,12 @@
 import time
-
 from sagemaker.sklearn.estimator import SKLearn
+from dotenv import load_dotenv
+import os
 
-BUCKET = "amazon-sage-iris-273921301409-eu-north-1-an"
-ROLE_ARN = "arn:aws:iam::273921301409:role/SageMakerIrisRole"
+load_dotenv()
+
+BUCKET = os.environ["AWS_S3_BUCKET_NAME"]
+ROLE_ARN = os.environ["AWS_SAGEMAKER_ROLE_ARN"]
 
 estimator = SKLearn(
     entry_point="train.py",
